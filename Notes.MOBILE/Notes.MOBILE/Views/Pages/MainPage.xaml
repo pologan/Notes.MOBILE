@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Notes.MOBILE.Views.Pages.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Notes.MOBILE.Views.Controls">
+    <ContentPage.Content>
+        <Grid
+            Padding="0"
+            BackgroundColor="{StaticResource MainBackgroundColor}"
+            ColumnDefinitions="15, *, 15"
+            ColumnSpacing="0"
+            RowDefinitions="70, *, 20"
+            RowSpacing="0">
+
+            <!--  Tab  -->
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Orientation="Horizontal"
+                VerticalOptions="FillAndExpand">
+                <StackLayout.Background>
+                    <RadialGradientBrush Center="0.5,0.5" Radius="0.8">
+                        <GradientStop Offset="0.1" Color="{StaticResource TabBackgroundColor}" />
+                        <GradientStop Offset="1.0" Color="{StaticResource MainBackgroundColor}" />
+                    </RadialGradientBrush>
+                </StackLayout.Background>
+
+                <Label
+                    Margin="15,0,0,0"
+                    FontSize="32"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="Notes"
+                    TextColor="{StaticResource TabTextColor}"
+                    VerticalOptions="Center" />
+                <Button
+                    Padding="0"
+                    Background="Transparent"
+                    BorderWidth="0"
+                    FontSize="40"
+                    HorizontalOptions="EndAndExpand"
+                    Text="+"
+                    TextColor="{StaticResource TabTextColor}"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <ListView
+                x:Name="listView"
+                Grid.Row="1"
+                Grid.Column="1"
+                HasUnevenRows="True"
+                SelectionMode="None"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <controls:NoteView />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

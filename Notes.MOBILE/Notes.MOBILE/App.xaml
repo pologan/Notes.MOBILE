@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="Notes.MOBILE.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  Fonts  -->
+            <OnPlatform x:Key="Icons" x:TypeArguments="x:String">
+                <On Platform="Android" Value="icons.ttf#Icons" />
+            </OnPlatform>
+            <!--  Colors  -->
+            <Color x:Key="MainBackgroundColor">#222222</Color>
+            <Color x:Key="TabBackgroundColor">#333d33</Color>
+            <Color x:Key="MainBorderColor">#DDDDDD</Color>
+            <Color x:Key="MainTextColor">#EFEFEF</Color>
+            <Color x:Key="TabTextColor">#EEEEEE</Color>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
