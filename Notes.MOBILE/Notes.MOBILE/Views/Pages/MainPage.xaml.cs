@@ -1,4 +1,5 @@
-﻿using Notes.MOBILE.ViewModels;
+﻿using Notes.MOBILE.Models.DTOs;
+using Notes.MOBILE.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,17 @@ namespace Notes.MOBILE.Views.Pages
             base.OnAppearing();
 
             listView.ItemsSource = App.Notes;
+        }
+
+        private async void ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = e.Item as NoteDTO;
+            await Navigation.PushAsync(new DetailPage(item.Id), true);
+        }
+
+        private async void AddNewClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddEditPage());
         }
     }
 }

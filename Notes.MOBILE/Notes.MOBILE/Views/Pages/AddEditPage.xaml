@@ -1,10 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Notes.MOBILE.Views.Pages.MainPage"
+    x:Class="Notes.MOBILE.Views.Pages.AddEditPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Notes.MOBILE.Views.Controls"
-    NavigationPage.HasNavigationBar="False">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Content>
         <Grid
             Padding="0"
@@ -27,33 +25,37 @@
                         <GradientStop Offset="1.0" Color="{StaticResource MainBackgroundColor}" />
                     </RadialGradientBrush>
                 </StackLayout.Background>
-
-                <Label Style="{StaticResource TitleLabel}" Text="Notes" />
                 <Button
-                    Clicked="AddNewClicked"
+                    Clicked="CancelClicked"
+                    HorizontalOptions="StartAndExpand"
+                    Style="{StaticResource IconButton}"
+                    Text="&#xE801;"
+                    TextColor="{StaticResource TabTextColor}" />
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource TitleLabel}"
+                    Text="{Binding AddEdit}" />
+                <Button
+                    Clicked="ApplyClicked"
                     HorizontalOptions="EndAndExpand"
                     Style="{StaticResource IconButton}"
-                    Text="&#xE804;"
-                    TextColor="{StaticResource TabTextColor}"
-                    VerticalOptions="Center" />
+                    Text="&#xE803;"
+                    TextColor="{StaticResource TabTextColor}" />
             </StackLayout>
-            <ListView
-                x:Name="listView"
+            <Frame
                 Grid.Row="1"
                 Grid.Column="1"
-                HasUnevenRows="True"
-                ItemTapped="ItemTapped"
-                SelectionMode="None"
-                VerticalOptions="FillAndExpand"
-                VerticalScrollBarVisibility="Never">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <controls:NoteView />
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                Margin="0,20,0,0"
+                Padding="0"
+                BackgroundColor="{StaticResource EditorBackgroundColor}"
+                BorderColor="{StaticResource TabBackgroundColor}">
+                <Editor
+                    BackgroundColor="{StaticResource EditorBackgroundColor}"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding Note.Content}"
+                    VerticalOptions="FillAndExpand" />
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

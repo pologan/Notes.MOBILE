@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Notes.MOBILE.Models.DTOs;
+using Notes.MOBILE.Views.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,7 @@ namespace Notes.MOBILE.Views.Controls
         public NoteView()
         {
             InitializeComponent();
+            
         }
     }
 }

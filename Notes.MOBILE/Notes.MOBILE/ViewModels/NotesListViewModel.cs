@@ -9,7 +9,7 @@ namespace Notes.MOBILE.ViewModels
 {
     public class NotesListViewModel
     {
-
+        public ObservableCollection<NoteViewModel> Notes { get; set; }
         public NotesListViewModel()
         {
             App.Notes = new ObservableCollection<NoteDTO>
@@ -22,7 +22,7 @@ namespace Notes.MOBILE.ViewModels
                     "luctus orci. Donec finibus sit amet odio vel ultricies. Vivamus sed sollicitudin arcu. Ut felis tellus, finibus id mattis non, volutpat" +
                     " et magna. Morbi molestie varius aliquet. Nullam sed efficitur justo, nec suscipit risus. Pellentesque maximus, ligula at sollicitudin malesuada," +
                     " mi nibh finibus ipsum, vel volutpat velit tortor vel leo. Curabitur quis tempus leo, in feugiat diam. Aliquam sed tortor nisi.",
-                    AddDate = new DateTime()
+                    AddDate = DateTime.Now
                 },
                 new NoteDTO
                 {
@@ -32,7 +32,7 @@ namespace Notes.MOBILE.ViewModels
                     "luctus orci. Donec finibus sit amet odio vel ultricies. Vivamus sed sollicitudin arcu. Ut felis tellus, finibus id mattis non, volutpat" +
                     " et magna. Morbi molestie varius aliquet. Nullam sed efficitur justo, nec suscipit risus. Pellentesque maximus, ligula at sollicitudin malesuada," +
                     " mi nibh finibus ipsum, vel volutpat velit tortor vel leo. Curabitur quis tempus leo, in feugiat diam. Aliquam sed tortor nisi.",
-                    AddDate = new DateTime()
+                    AddDate = DateTime.Now
                 },
                 new NoteDTO
                 {
@@ -42,7 +42,7 @@ namespace Notes.MOBILE.ViewModels
                     "luctus orci. Donec finibus sit amet odio vel ultricies. Vivamus sed sollicitudin arcu. Ut felis tellus, finibus id mattis non, volutpat" +
                     " et magna. Morbi molestie varius aliquet. Nullam sed efficitur justo, nec suscipit risus. Pellentesque maximus, ligula at sollicitudin malesuada," +
                     " mi nibh finibus ipsum, vel volutpat velit tortor vel leo. Curabitur quis tempus leo, in feugiat diam. Aliquam sed tortor nisi.",
-                    AddDate = new DateTime()
+                    AddDate = DateTime.Now
                 },
             };
         }
