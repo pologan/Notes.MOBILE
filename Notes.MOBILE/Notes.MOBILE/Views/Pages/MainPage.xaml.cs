@@ -1,10 +1,6 @@
-﻿using Notes.MOBILE.Models.DTOs;
+﻿using Notes.API.Models;
 using Notes.MOBILE.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,16 +19,18 @@ namespace Notes.MOBILE.Views.Pages
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            await _vm.RefreshNotes();
 
             listView.ItemsSource = App.Notes;
         }
 
         private async void ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var item = e.Item as NoteDTO;
+            var item = e.Item as Note;
             await Navigation.PushAsync(new DetailPage(item.Id), true);
         }
 

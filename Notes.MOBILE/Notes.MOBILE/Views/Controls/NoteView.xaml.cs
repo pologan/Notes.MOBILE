@@ -1,10 +1,8 @@
-﻿using Notes.MOBILE.Models.DTOs;
+﻿using Notes.API.Models;
 using Notes.MOBILE.Views.Pages;
+using Notes.MOBILE.Views.PopUps;
+using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,7 +15,31 @@ namespace Notes.MOBILE.Views.Controls
         public NoteView()
         {
             InitializeComponent();
-            
+
+        }
+
+        private async void EditClicked(object sender, EventArgs e)
+        {
+            var note = (Note)BindingContext;
+            int id = note.Id;
+            await (App.Current.MainPage as NavigationPage).PushAsync(new AddEditPage(id));
+        }
+
+        private void DeleteClicked(object sender, EventArgs e)
+        {
+            var note = (Note)BindingContext;
+
+            PopupNavigation.Instance.PushAsync(new DeletePopup 
+            {
+                
+                YesCommand = new Command (() =>
+                                   {
+                                       App.Notes.Remove(note);
+                                       App.NotesManager.DeleteNoteAsync(note);
+                                       PopupNavigation.Instance.PopAsync();
+                                   }),
+                NoCommand = new Command (()=> PopupNavigation.Instance.PopAsync())
+            });
         }
     }
 }

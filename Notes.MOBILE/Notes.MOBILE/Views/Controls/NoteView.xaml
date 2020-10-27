@@ -32,7 +32,7 @@
                         Text="{Binding Content}" />
                     <Label
                         Style="{StaticResource DateLabel}"
-                        Text="{Binding AddDate, StringFormat='{0:dd.mm.yyyy}'}"
+                        Text="{Binding AddDate, StringFormat='{0:dd.MM.yyyy}'}"
                         VerticalOptions="EndAndExpand" />
                 </StackLayout>
                 <BoxView
@@ -44,10 +44,12 @@
                     Margin="10"
                     Spacing="10">
                     <Button
+                        Clicked="EditClicked"
                         Style="{StaticResource IconButton}"
                         Text="&#xE800;"
                         VerticalOptions="Center" />
                     <Button
+                        Clicked="DeleteClicked"
                         Style="{StaticResource IconButton}"
                         Text="&#xE802;"
                         VerticalOptions="Center" />

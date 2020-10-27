@@ -1,20 +1,26 @@
-﻿using Notes.MOBILE.Models.DTOs;
+﻿using Notes.API.Models;
+using Notes.MOBILE.Dtos;
+using PropertyChanged;
 using System;
 using System.Linq;
 
 namespace Notes.MOBILE.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class NoteViewModel
     {
-        public NoteDTO Note { get; set; }
+        public Note Note { get; set; }
+        public string Content { get; set; }
         public NoteViewModel(int id)
         {
             Note = App.Notes.Where(n => n.Id == id).FirstOrDefault();
+
+            Content = Note.Content;
         }
 
         public NoteViewModel()
         {
-            Note = new NoteDTO
+            Note = new Note
             {
                 Content = "",
                 AddDate = DateTime.Now
@@ -23,12 +29,18 @@ namespace Notes.MOBILE.ViewModels
 
         internal void AddNote()
         {
-            App.Notes.Add(Note);
+            Note.Content = Content;
+            App.NotesManager.CreateNoteAsync(new NoteCreateDto
+            {
+                Content = Note.Content,
+                AddDate = Note.AddDate
+            });
         }
 
         internal void EditNote()
         {
-            App.Notes.Where(n => n.Id == Note.Id).FirstOrDefault().Content = Note.Content;
+            Note.Content = Content;
+            App.NotesManager.UpdateNoteAsync(Note.Id, new NoteUpdateDto { AddDate = Note.AddDate, Content = Note.Content });
         }
     }
 }

@@ -1,21 +1,23 @@
-﻿using Notes.MOBILE.Models.DTOs;
+﻿using Notes.API.Models;
+using Notes.MOBILE.Data;
 using Notes.MOBILE.Views.Pages;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Notes.MOBILE
 {
     public partial class App : Application
     {
-        public static ObservableCollection<NoteDTO> Notes { get; set; } 
+        public static ObservableCollection<Note> Notes { get; set; }
+        public static NotesManager NotesManager { get; private set; }
+
         public App()
         {
             InitializeComponent();
 
-            Notes = new ObservableCollection<NoteDTO>();
+            NotesManager = new NotesManager(new RestService());
+            Notes = new ObservableCollection<Note>();
             MainPage = new NavigationPage(new MainPage());
         }
 
